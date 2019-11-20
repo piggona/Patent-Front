@@ -16,7 +16,8 @@ import {
   Button,
   Row,
   Col,
-  Modal
+  Modal,
+  Popover
 } from "ant-design-vue";
 
 Vue.config.productionTip = false;
@@ -32,6 +33,7 @@ Vue.use(Button);
 Vue.use(Row);
 Vue.use(Col);
 Vue.use(Modal);
+Vue.use(Popover);
 Vue.component("v-icon", Icon);
 Vue.prototype.$ = $;
 new Vue({

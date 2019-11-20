@@ -79,26 +79,38 @@ export default {
     onDateChange(value, dateString) {
       console.log("Selected Time: ", value);
       console.log("Formatted Selected Time: ", dateString);
+      let year_from = dateString[0];
+      year_from = year_from.split(" ")[0];
+      let year_to = dateString[1];
+      year_to = year_to.split(" ")[0];
+      let val = String(year_from) + " " + String(year_to);
+      if (val === " ") {
+        val = "";
+      }
+      console.log("onDateChange", val);
+      let id = this.id;
+      this.$store.commit("search/setQuery", { id, val });
     },
     onOk(value) {
-      let id = this.id;
-      console.log(
-        "onOk: ",
-        value[0]["_d"]
-          .toLocaleString()
-          .split(" ")[0]
-          .replace(new RegExp("/", "g"), "-")
-      );
-      let year_from = value[0]["_d"]
-        .toLocaleString()
-        .split(" ")[0]
-        .replace(new RegExp("/", "g"), "-");
-      let year_to = value[1]["_d"]
-        .toLocaleString()
-        .split(" ")[0]
-        .replace(new RegExp("/", "g"), "-");
-      let val = String(year_from) + " " + String(year_to);
-      this.$store.commit("search/setQuery", { id, val });
+      console.log(value);
+      // let id = this.id;
+      // console.log(
+      //   "onOk: ",
+      //   value[0]["_d"]
+      //     .toLocaleString()
+      //     .split(" ")[0]
+      //     .replace(new RegExp("/", "g"), "-")
+      // );
+      // let year_from = value[0]["_d"]
+      //   .toLocaleString()
+      //   .split(" ")[0]
+      //   .replace(new RegExp("/", "g"), "-");
+      // let year_to = value[1]["_d"]
+      //   .toLocaleString()
+      //   .split(" ")[0]
+      //   .replace(new RegExp("/", "g"), "-");
+      // let val = String(year_from) + " " + String(year_to);
+      // this.$store.commit("search/setQuery", { id, val });
     }
   },
   mounted() {

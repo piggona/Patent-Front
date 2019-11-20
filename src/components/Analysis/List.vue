@@ -7,16 +7,18 @@
     <div v-for="dat in list" :key="dat.rank">
       <div class="cited-patents chart-title">
         {{dat.rank}}.
-        <a-popover title="IPC分类号解释：">
+        <a-popover v-if="typeof dat.explain !== 'undefined'" title="IPC分类号解释：">
           <template slot="content">
             <p>{{dat.explain}}</p>
           </template>
           <a id="cited-title">{{dat.title | ellipsis}}</a>
         </a-popover>
+
+        <a v-if="typeof dat.explain === 'undefined'" id="cited-title">{{dat.title | ellipsis}}</a>
         <!-- @click="showModal(dat.explain,dat.uuid)" -->
         <div id="cited-num" class="dep-title">{{dat.date}}</div>
         <!-- <a-modal title="IPC explain" v-model="visible" @ok="handleOk">
-          <p>{{dat.explain}}</p>
+          <p>{{dat.explain}}</p> 
         </a-modal>-->
       </div>
     </div>
