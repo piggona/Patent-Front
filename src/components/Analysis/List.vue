@@ -14,7 +14,11 @@
           <a id="cited-title">{{dat.title | ellipsis}}</a>
         </a-popover>
 
-        <a v-if="typeof dat.explain === 'undefined'" id="cited-title">{{dat.title | ellipsis}}</a>
+        <a
+          v-if="typeof dat.explain === 'undefined'"
+          id="cited-title"
+          @click="showModal(dat.explain,dat.uuid)"
+        >{{dat.title | ellipsis}}</a>
         <!-- @click="showModal(dat.explain,dat.uuid)" -->
         <div id="cited-num" class="dep-title">{{dat.date}}</div>
         <!-- <a-modal title="IPC explain" v-model="visible" @ok="handleOk">
@@ -44,15 +48,11 @@ export default {
   // },
   methods: {
     showModal(val, ref) {
-      if (typeof val !== "undefined") {
-        alert(val);
-      } else {
-        let { href } = this.$router.resolve({
-          name: "patentAnalysis"
-        });
-        let newhref = href + "?patent_uuid=" + ref;
-        window.open(newhref, "_blank");
-      }
+      let { href } = this.$router.resolve({
+        name: "patentAnalysis"
+      });
+      let newhref = href + "?patent_uuid=" + ref;
+      window.open(newhref, "_blank");
     }
     // handleOk(e) {
     //   console.log(e);

@@ -65,7 +65,7 @@ var resPie = {
     },
     series: [
       {
-        name: "访问来源",
+        name: "专利种类",
         type: "pie",
         radius: "55%",
         center: ["50%", "60%"],
