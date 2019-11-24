@@ -52,6 +52,9 @@ export default {
     option: {
       type: Object,
       default: () => {}
+    },
+    link: {
+      type: String
     }
   },
   watch: {
@@ -68,6 +71,7 @@ export default {
   },
   mounted() {
     this.renderChart();
+    console.log("this.link", this.link);
     addListener(this.$refs.chartDom, this.resize);
   },
   beforeDestroy() {
@@ -81,6 +85,15 @@ export default {
     },
     renderChart() {
       this.chart = echarts.init(this.$refs.chartDom);
+      console.log("this.link", this.link);
+      if (this.link) {
+        let l = this.link;
+        this.chart.on("click", function(params) {
+          // console.log("Chart Params:", params);
+          let uuid = params.data.uuid;
+          window.open(l + uuid, "_blank");
+        });
+      }
       this.chart.setOption(this.option, true);
     }
   }

@@ -35,6 +35,7 @@
       :list="res_relation_list"
       :chartStyle="chartStyle"
       :chartOption="resRelation.data"
+      :link="'/analysis/patent?patent_uuid='"
     />
     <a-card class="w" title="机构关键词">
       <Graph :ChartStyle="chartStyle" :option="resCloud.data" />

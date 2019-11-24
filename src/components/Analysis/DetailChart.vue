@@ -3,7 +3,7 @@
     <div slot="title">{{ title }}</div>
     <a-row>
       <a-col :span="16">
-        <Chart :ChartStyle="chartStyle" :option="chartOption" />
+        <Chart :ChartStyle="chartStyle" :option="chartOption" :link="link" />
       </a-col>
       <a-col :span="8">
         <List :option="option" :list="list" />
@@ -16,7 +16,7 @@
 import List from "./List";
 import Chart from "./Graph";
 export default {
-  props: ["title", "option", "list", "chartStyle", "chartOption"],
+  props: ["title", "option", "list", "chartStyle", "chartOption", "link"],
   components: {
     List,
     Chart

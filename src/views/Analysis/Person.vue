@@ -34,6 +34,7 @@
       :list="res_net_list"
       :chartStyle="chartStyle"
       :chartOption="resNet.data"
+      :link="'/analysis/assignee?assignee='"
     />
     <a-card class="w" title="合作者分析">
       <Graph :ChartStyle="chartStyle" :option="resCo.data" />
